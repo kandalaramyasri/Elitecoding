@@ -1,0 +1,23 @@
+class BinaryTree
+{
+    
+    static ArrayList<Integer> preorder(Node root)
+    {
+        Stack<Node> stack=new Stack<Node>();
+        ArrayList<Integer> result=new ArrayList<Integer>();
+        if(root==null)
+            return result;
+        stack.push(root);
+        while(!stack.isEmpty()){
+            root=stack.pop();
+            result.add(root.data);
+        
+        if(root.right != null)
+           stack.push(root.right);
+        if(root.left !=null)
+           stack.push(root.left);
+        }
+        return result;
+    }
+
+}

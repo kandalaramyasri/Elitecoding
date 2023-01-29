@@ -1,0 +1,36 @@
+class Solution
+{
+   
+    static class Pair{
+        Node node;
+        int horzdist;
+         Pair(Node node,int horzdist){
+            this.node=node;
+            this.horzdist=horzdist;
+        }
+    }
+    
+    static ArrayList<Integer> topView(Node root)
+    {
+        ArrayList<Integer> result=new ArrayList<Integer>();
+        Queue<Pair> q=new LinkedList<Pair>();
+        Map<Integer,Integer> map=new TreeMap<Integer,Integer>();
+        q.offer(new Pair(root,0));
+        while(!q.isEmpty()){
+            Pair removed=q.poll();
+            Node temp=removed.node;
+            int line=removed.horzdist;
+            if(!map.containsKey(line))
+               map.put(line,temp.data);
+            if(temp.left!=null)
+                q.offer(new Pair(temp.left,line-1));
+            if(temp.right!=null)
+                q.offer(new Pair(temp.right,line+1));
+            
+        }
+        for(Map.Entry<Integer,Integer> e:map.entrySet()){
+            result.add(e.getValue());
+        }
+        return result;
+    }
+}

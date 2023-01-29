@@ -1,0 +1,32 @@
+class Solution
+{
+    public class Pair{
+        int hd;
+        Node node;
+        Pair(Node node,int hd){
+            this.node=node;
+            this.hd=hd;
+        }
+    }
+    public ArrayList <Integer> bottomView(Node root)
+    {
+        ArrayList<Integer> result=new ArrayList<Integer>();
+        Queue<Pair> queue=new LinkedList<Pair>();
+        Map<Integer,Integer> map=new TreeMap<Integer,Integer>();
+        queue.offer(new Pair(root,0));
+        while(!queue.isEmpty()){
+            Pair removed=queue.poll();
+            int line=removed.hd;
+            Node temp=removed.node;
+            map.put(line,temp.data);
+            if(temp.left!=null)
+              queue.offer(new Pair(temp.left,line-1));
+            if(temp.right!=null)
+              queue.offer(new Pair(temp.right,line+1));
+        }
+        for(Map.Entry<Integer,Integer> e:map.entrySet()){
+            result.add(e.getValue());
+        }
+        return result;
+    }
+}

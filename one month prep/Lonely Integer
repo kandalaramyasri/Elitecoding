@@ -1,0 +1,23 @@
+ class Result {
+
+        public static int lonelyinteger(List<Integer> a) {
+            
+            Map<Integer, Integer> map = new HashMap<>();
+            for (Integer element: a) {
+                if (!map.containsKey(element)) {
+                    map.put(element, 1);
+                } else {
+                    map.put(element, map.get(element)+1);
+                }
+            }
+            
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                if (entry.getValue() == 1) {
+                    return entry.getKey();
+                }
+        
+            }
+            return 0;
+        }
+
+    }

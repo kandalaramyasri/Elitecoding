@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+public class solution{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int count=0;
+        HashMap<String,Integer> map =new HashMap<>();
+        for(int i=0;i<n;i++){
+            String string=sc.next();
+            if(map.get(string)!=null){
+                count=map.get(string)+1;
+                map.put(string,count);
+            }else{
+                map.put(string,1);
+            }
+        }
+        int m=sc.nextInt();
+        for(int i=0;i<m;i++){
+            String query=sc.next();
+            if(map.get(query)==null){
+             System.out.println(0);
+            }else if(map.get(query)!=null){
+                System.out.println(map.get(query));
+            }
+        }
+        
+        
+    }
+}

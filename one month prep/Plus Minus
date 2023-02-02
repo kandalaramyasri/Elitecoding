@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+public class Solution{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int length=sc.nextInt();
+        float count0=0;
+        float countpositive=0;
+        float countnegative=0;
+        for(int i=0;i<length;i++){
+            int x=sc.nextInt();
+            if(x==0){
+                count0++;
+            }else if(x>0){
+                countpositive++;
+            }else if(x<0){
+                countnegative++;
+            }
+        }
+        System.out.printf("%1.6f" ,countpositive/length);
+        System.out.println();
+        System.out.printf("%1.6f" , countnegative/length);
+        System.out.println();
+        System.out.printf("%1.6f", count0/length);
+        
+    }
+}

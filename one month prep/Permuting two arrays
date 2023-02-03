@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+public class solution{
+
+     public static String twoArrays(int k, int[] A, int[] B) {
+        Arrays.sort(A);
+        Arrays.sort(B);
+       
+        for(int i = 0;  i < A.length; i++){
+            for(int j= 0;  j<B.length; j++)
+            if(A[i] + B[B.length-i-1] < k){
+                return "NO";
+            }
+        }
+        return "YES";
+     }
+    
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int Q=sc.nextInt();
+        for(int i=0;i<Q;i++){
+            int n=sc.nextInt();
+            int k=sc.nextInt();
+            int[] A=new int[n];
+            int[]B=new int[n];
+            for(int j=0;j<n;j++){
+                A[j]=sc.nextInt();
+            }
+            for(int l=0;l<n;l++){
+                B[l]=sc.nextInt();
+            }
+        
+       String result = twoArrays(k, A, B);
+        
+        System.out.println(result);
+        }
+    }
+    
+}
